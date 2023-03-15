@@ -1,0 +1,30 @@
+/* Write your CSS here */
+.info-bg {
+  display: flex;
+  justify-content: space-between;
+}
+.main-bg {
+  background-image: linear-gradient(to bottom, #fbc7d4, #9796f0, #8b5cf6);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.white-bg {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.bellow-bg {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hr-line {
+  background-color: #b5b7c4;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}

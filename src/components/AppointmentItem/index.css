@@ -1,0 +1,11 @@
+/* Write your CSS here */
+.appiontment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  border: 2px solid red;
+}
+.name {
+  margin-top: 15px;
+}
