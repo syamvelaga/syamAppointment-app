@@ -10,7 +10,12 @@ import './index.css'
 const intitilialList = []
 
 class Appointments extends Component {
-  state = {AppointmentList: intitilialList, Title: '', DateValue: ''}
+  state = {
+    AppointmentList: intitilialList,
+    Title: '',
+    DateValue: '',
+    isTrue: false,
+  }
 
   onAddAppointment = event => {
     event.preventDefault()
@@ -55,9 +60,26 @@ class Appointments extends Component {
     }))
   }
 
+  filterAppointment = () => {
+    const {isTrue} = this.state
+
+    if (isTrue) {
+      this.setState({isTrue: false})
+    } else {
+      this.setState({isTrue: true})
+    }
+  }
+
   render() {
-    const {AppointmentList} = this.state
+    let {AppointmentList} = this.state
+    const {isTrue} = this.state
     console.log(AppointmentList)
+
+    if (isTrue) {
+      const newList = AppointmentList.filter(x => x.isFavorite === false)
+      AppointmentList = newList
+    }
+
     return (
       <div className="main-bg">
         <div className="white-bg">
@@ -97,13 +119,22 @@ class Appointments extends Component {
           <div className="bellow-bg">
             <h1>Appointments</h1>
             <div>
-              <button type="button">Starred</button>
+              {isTrue ? (
+                <button onClick={this.filterAppointment} type="button">
+                  Starred
+                </button>
+              ) : (
+                <button onClick={this.filterAppointment} type="button">
+                  Starred
+                </button>
+              )}
             </div>
           </div>
           <div>
             <ul>
               {AppointmentList.map(x => (
                 <AppointmentItem
+                  id={x.id}
                   key={x.id}
                   isFavorite={x.isFavorite}
                   Title={x.Title}
